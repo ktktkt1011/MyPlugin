@@ -1,0 +1,50 @@
+{
+  "name": "fy2023-kintone-dojo",
+  "version": "1.0.0",
+  "main": "20230630test.js",
+  "scripts": {
+    "cu:down": "node ./tools/kcuh/index.cjs -- ./common_dev.json --timestamp true --import --import-dir ./.dest",
+    "cu:up": "node ./tools/kcuh/index.cjs -- ./common_dev.json --timestamp true --backup-dir ./.backup",
+    "cu:add": "node ./tools/kcuh/index.cjs -- -m ./common_dev.json -a ./js -a ./css -t ./kcuh.template.json"
+  },
+  "devDependencies": {
+    "@cybozu/eslint-config": "^20.0.1",
+    "@kintone/dts-gen": "^9.0.3",
+    "@types/jquery": "^4.0.0",
+    "@types/luxon": "^3.7.1",
+    "@types/node": "18",
+    "@types/nprogress": "^0.2.3",
+    "@types/papaparse": "^5.5.2",
+    "app-root-path": "3",
+    "colors": "1.4.0",
+    "dotenv": "16",
+    "eslint": "^8.57.1",
+    "eslint-plugin-prefer-arrow": "^1.2.3",
+    "prettier": "^3.0.0",
+    "ts-loader": "^9.5.7",
+    "typescript": "^5.8.3",
+    "webpack": "^5.105.4",
+    "webpack-cli": "^7.0.2"
+  },
+  "author": "",
+  "license": "ISC",
+  "keywords": [],
+  "description": "",
+  "dependencies": {
+    "@kintone/rest-api-client": "^6.1.4",
+    "@types/progressbar.js": "^1.1.7",
+    "jquery": "^4.0.0",
+    "kintone-ui-component": "^1.24.0",
+    "luxon": "^3.7.2",
+    "nprogress": "^0.2.0",
+    "papaparse": "^5.5.3",
+    "progressbar.js": "^1.1.1",
+    "sweetalert2": "^11.26.24"
+  },
+  "compilerOptions": {
+    "allowImportingTsExtensions": true,
+    "types": [
+      "@kintone/dts-gen/ambient/config"
+    ]
+  }
+}

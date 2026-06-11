@@ -1,0 +1,28 @@
+{
+  "manifest_version": 1,
+  "version": "1.0",
+  "type": "APP",
+  "name": {
+    "ja": "CSV取込プラグイン",
+    "en": "corporate code lookup plugin"
+  },
+  "description": {
+    "ja": "法人番号を入力すると関連情報が自動入力できるプラグインです。",
+    "en": "This is a plugin that allows you to automatically enter related information when you enter a corporate code."
+  },
+  "icon": "icon/icon.jpg",
+  "homepage_url": {
+    "ja": "https://www.system-renovate.co.jp/contact_us",
+    "en": "https://www.system-renovate.co.jp/contact_us"
+  },
+  "desktop": {
+    "js": ["dist/desktop_main.js"],
+    "css": ["css/config.css"]
+  },
+  "config": {
+    "html": "html/config.html",
+    "js": ["dist/config_main.js"],
+    "css": ["css/config.css"],
+    "required_params": ["singleLine", "space"]
+  }
+}

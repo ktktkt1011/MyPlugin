@@ -1,0 +1,234 @@
+@charset "utf-8";
+input[type="checkbox"] {
+  margin: 0;
+  padding: 0;
+  background: none;
+  border: none;
+  border-radius: 0;
+  outline: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+}
+
+/* チェックボックスデザイン */
+input[type="checkbox"] {
+  cursor: pointer;
+  padding-left: 30px; /*label手前にチェックボックス用の余白を開ける*/
+  vertical-align: middle;
+  position: relative;
+}
+input[type="checkbox"]::before,
+input[type="checkbox"]::after {
+  content: "";
+  display: block;
+  position: absolute;
+}
+input[type="checkbox"]::before {
+  background-color: #fff;
+  border-radius: 0%;
+  border: 1px solid #e3e7e8;
+  width: 20px; /*チェックボックスの横幅*/
+  height: 20px; /*チェックボックスの縦幅*/
+  transform: translateY(-50%);
+  top: 50%;
+  left: 5px;
+}
+input[type="checkbox"]::after {
+  border-bottom: 3px solid #3498db; /*チェックの太さ*/
+  border-left: 3px solid #3498db; /*チェックの太さ*/
+  opacity: 0; /*チェック前は非表示*/
+  height: 6px; /*チェックの高さ*/
+  width: 11px; /*チェックの横幅*/
+  transform: rotate(-45deg);
+  top: -7px; /*チェック時の位置調整*/
+  left: 10px; /*チェック時の位置調整*/
+}
+input[type="checkbox"]:checked::after {
+  opacity: 1; /*チェック後表示*/
+}
+.checkbox-area li,
+.radioButton-area li,
+.input-area li {
+  padding: 10px;
+  font-size: 14px;
+}
+.checkbox-area,
+.radioButton-area,
+.input-area {
+  border: 1px solid #e3e7e8;
+  width: 600px;
+}
+.block-fieldSelect,
+.block-option,
+.block-fieldOption {
+  background-color: #f5f5f5;
+  padding: 20px;
+  width: 800px;
+}
+.block-explanation {
+  padding: 20px 0px;
+}
+.block-button {
+  padding: 16px 0px;
+}
+.button-dialog-ok {
+  margin-left: 16px;
+  width: 161px;
+  height: 48px;
+  color: white;
+  background-color: #3498db;
+  border: 1px solid #e3e7e8;
+}
+.button-dialog-cancel {
+  margin-left: 16px;
+  width: 161px;
+  height: 48px;
+  color: #3498db;
+  background-color: #f7f9fa;
+  border: 1px solid #e3e7e8;
+}
+.checkbox-area,
+.radioButton-area,
+.input-area {
+  margin-top: 10px;
+}
+.check-all {
+  padding-left: 10px;
+}
+.radio-button {
+  position: relative;
+  padding-left: 35px;
+  margin-right: 15px;
+  cursor: pointer;
+  font-size: 14px; /* テキストのサイズを調整 */
+}
+
+.radio-button input[type="radio"] {
+  position: absolute;
+  opacity: 0;
+  cursor: pointer;
+}
+
+.radio-button span::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 20px; /* 外側の円のサイズ */
+  height: 20px; /* 外側の円のサイズ */
+  border-radius: 50%;
+  border: 1px solid #e3e7e8; /* 枠線の色 */
+  background-color: #fff; /* 背景色 */
+}
+
+.radio-button input[type="radio"]:checked + span::before {
+  background-color: #fff; /* 選択時の色 */
+}
+
+.radio-button input[type="radio"]:checked + span::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px; /* 内側の点のサイズ */
+  height: 14px; /* 内側の点のサイズ */
+  border-radius: 50%;
+  background: #3498db; /* 内側の点の色 */
+}
+
+input[type="number"] {
+  border: 1px solid #e3e7e8;
+  outline: 0;
+  position: relative;
+  appearance: none;
+  -moz-appearance: textfield;
+
+  &::-webkit-inner-spin-button,
+  &::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+
+#import,
+#export {
+  border: 1px solid #e3e7e8;
+  margin: 10px;
+}
+.import-export-button-area {
+  margin-top: 0px;
+}
+#plugin-submit,
+#plugin-cancel {
+  cursor: pointer;
+}
+#customAlert {
+  position: fixed;
+  left: 50%;
+  top: 10%;
+  transform: translate(-50%, -50%);
+  background-color: lightblue;
+  border-radius: 5px;
+  padding: 20px;
+  text-align: center;
+}
+
+/* プラグイン設定画面：ドロップダウンを横に設置する */
+.dropdown-row {
+  /* display: flex; */
+  align-items: center;
+  gap: 12px; /* select同士の間隔 */
+  margin-bottom: 10px;
+}
+
+/* ドロップダウンの幅を変更する */
+.block-option select {
+  height: 28px; /* ← 高さを調整 */
+  width: auto; /* 好きな幅に調整 */
+  min-width: 150px;
+  padding: 2px 6px;
+  font-size: 14px;
+}
+
+/* ブロック間を区切る（例：都道府県と市区町村の間など） */
+.section-divider {
+  border-top: 1px solid #e3e7e8; /* グレーのライン */
+  margin: 10px 0; /* 上下の余白 */
+  padding-top: 10px; /* 線の下に余白 */
+}
+
+/* ラベル（例：都道府県）とドロップダウンの余白を開ける */
+.block-option .kintoneplugin-label {
+  display: block;
+  margin-bottom: 8px; /* ← ラベルの下に余白を追加 */
+}
+
+/* 「■xxxxx」のラベルの文字の大きさを変更 */
+.container_label {
+  font-size: 17px;
+}
+
+.container_sub_label {
+  font-size: 12px;
+}
+
+/* 「xxxxフィールド：」のラベルについて */
+.dropdown-row span {
+  font-size: 14px;
+  vertical-align: middle;
+}
+
+#corporate-code-search-dialog {
+  --kuc-dialog-max-width: 1200px;
+}
+
+#dialog-table {
+  --kuc-table-header-0-width: 65px;
+}
+
+#dialog-radio-id {
+  --kuc-radio-button-menu-width: 46px;
+}

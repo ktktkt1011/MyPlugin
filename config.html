@@ -1,0 +1,176 @@
+<html>
+  <head></head>
+  <body>
+    <div>
+      <div id="import-export-button-area"></div>
+      <hr />
+      <div class="block-explanation">
+        <label class="title"
+          >法人番号検索プラグインの設定画面です。<br />法人番号の入力に応じて関連情報の自動入力が可能となり、また法人名から関連情報の取得が可能となります。</label
+        >
+      </div>
+      <div class="block-option">
+        <label class="kintoneplugin-label">
+          <span class="container_label">■ アプリケーションID</span
+          ><span style="color: red"> *</span>
+          <br />
+          <span class="container_sub_label"
+            >法人番号システム
+            Web-APIのアプリケーションIDを入力してください</span
+          >
+        </label>
+        <div class="dropdown-row">
+          <p>
+            <input id="application-code" />
+          </p>
+        </div>
+
+        <div class="section-divider"></div>
+        <label class="kintoneplugin-label">
+          <span class="container_label">■ 法人番号</span
+          ><span style="color: red"> *</span>
+          <br />
+          <span class="container_sub_label"
+            >法人番号を設定するフィールドを指定してください</span
+          >
+        </label>
+        <div class="dropdown-row">
+          <p>
+            <select id="corporate-code">
+              <option value=""></option>
+            </select>
+          </p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <label class="kintoneplugin-label">
+          <span class="container_label">■ 取引先名</span>
+          <br />
+          <span class="container_sub_label"
+            >取引先名を設定するフィールドを指定してください</span
+          >
+        </label>
+        <div class="dropdown-row">
+          <p>
+            <select id="corporate-name">
+              <option value=""></option>
+            </select>
+          </p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <label class="kintoneplugin-label">
+          <span class="container_label">■ フリガナ</span>
+          <br />
+          <span class="container_sub_label"
+            >フリガナを設定するフィールドを指定してください</span
+          >
+        </label>
+        <div class="dropdown-row">
+          <p>
+            <select id="furigana">
+              <option value=""></option>
+            </select>
+          </p>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <label class="kintoneplugin-label">
+          <span class="container_label">■ 郵便番号</span>
+          <br />
+          <span class="container_sub_label"
+            >郵便番号を設定するフィールドを指定してください</span
+          >
+        </label>
+        <div class="dropdown-row">
+          <select id="prefectureCode">
+            <option value=""></option>
+          </select>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <label class="kintoneplugin-label">
+          <span class="container_label">■ 都道府県</span>
+          <br />
+          <span class="container_sub_label"
+            >都道府県を設定するフィールドを指定してください</span
+          >
+        </label>
+        <div class="dropdown-row">
+          <select id="kind">
+            <option value=""></option>
+          </select>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <label class="kintoneplugin-label">
+          <span class="container_label">■ 市区町村</span> <br />
+          <span class="container_sub_label"
+            >市区町村を設定するフィールドを指定してください</span
+          >
+        </label>
+        <div class="dropdown-row">
+          <select id="prefectureName">
+            <option value=""></option>
+          </select>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <label class="kintoneplugin-label">
+          <span class="container_label">■ 丁目・番地・号</span> <br />
+          <span class="container_sub_label"
+            >丁目・番地・号を設定するフィールドを指定してください</span
+          >
+        </label>
+        <div class="dropdown-row">
+          <select id="cityName">
+            <option value=""></option>
+          </select>
+        </div>
+
+        <div class="section-divider"></div>
+
+        <label class="kintoneplugin-label">
+          <span class="container_label">■ ボタン設置フィールド</span
+          ><span style="color: red"> *</span><br />
+          <span class="container_sub_label"
+            >[法人情報取得]ボタンを設置するフィールドを指定してください</span
+          >
+        </label>
+        <div class="dropdown-row">
+          <select id="get-corporate-code">
+            <option value=""></option>
+          </select>
+        </div>
+        <div class="section-divider"></div>
+
+        <label class="kintoneplugin-label">
+          <span class="container_label">■ 逆引き検索リンク用フィールド</span
+          ><br />
+          <span class="container_sub_label">
+            逆引き検索[法人名から情報取得]ボタンを設置するフィールドを指定してください</span
+          >
+        </label>
+        <div class="dropdown-row">
+          <select id="get-corporate-name-code">
+            <option value=""></option>
+          </select>
+        </div>
+      </div>
+      <div class="block-button">
+        <button type="button" id="plugin-cancel" class="button-dialog-cancel">
+          キャンセル　
+        </button>
+        <button type="button" id="plugin-submit" class="button-dialog-ok">
+          保存　
+        </button>
+      </div>
+    </div>
+  </body>
+</html>
