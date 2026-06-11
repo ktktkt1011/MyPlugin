@@ -5,7 +5,7 @@
 import { FIELD_TYPE } from "../config";
 
 import type { AppSchema, KintoneRecord } from "../types";
-
+const maxRecords = 10000;
 /**
  * バリデーションエラー
  */
@@ -26,7 +26,12 @@ export function validateRecords(
   schema: AppSchema,
 ): void {
   const errors: ValidationError[] = [];
-
+  if (records.length > maxRecords) {
+    throw new Error(
+      `CSVレコード数が上限を超えています。\n
+    最大:${maxRecords}件`,
+    );
+  }
   for (let index = 0; index < records.length; index++) {
     const record = records[index];
 
@@ -56,36 +61,36 @@ function validateRecord(
   row: number,
 ): ValidationError[] {
   const errors: ValidationError[] = [];
+  if (record.length)
+    for (const [fieldCode, fieldInfo] of Object.entries(schema.fields)) {
+      const value = record[fieldCode]?.value;
 
-  for (const [fieldCode, fieldInfo] of Object.entries(schema.fields)) {
-    const value = record[fieldCode]?.value;
+      /**
+       * 必須チェック
+       */
+      if (fieldInfo.required && isEmpty(value)) {
+        errors.push({
+          row,
+          fieldCode,
+          message: "必須項目です",
+        });
 
-    /**
-     * 必須チェック
-     */
-    if (fieldInfo.required && isEmpty(value)) {
-      errors.push({
-        row,
-        fieldCode,
-        message: "必須項目です",
-      });
+        continue;
+      }
 
-      continue;
+      /**
+       * 型チェック
+       */
+      const error = validateField(value, fieldInfo);
+
+      if (error) {
+        errors.push({
+          row,
+          fieldCode,
+          message: error,
+        });
+      }
     }
-
-    /**
-     * 型チェック
-     */
-    const error = validateField(value, fieldInfo);
-
-    if (error) {
-      errors.push({
-        row,
-        fieldCode,
-        message: error,
-      });
-    }
-  }
 
   return errors;
 }
