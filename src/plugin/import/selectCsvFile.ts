@@ -105,9 +105,8 @@ export function selectCsvFile(): Promise<File | null> {
       if (isResolved) resolve(selectedFile);
       resolve(null);
     });
-
-    footer.appendChild(cancelButton);
     footer.appendChild(okButton);
+    footer.appendChild(cancelButton);
 
     content.appendChild(footer);
 

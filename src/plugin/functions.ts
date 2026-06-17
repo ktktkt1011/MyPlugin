@@ -87,6 +87,7 @@ export const FUNCTIONS = {
         spinner.close();
         window.location.reload();
       } catch (error) {
+        spinner.close();
         const message = error instanceof Error ? error.message : String(error);
         await Swal.fire({
           title: "エラー",

@@ -29,12 +29,4 @@ export type CsvUpdateRecords = Array<
     }
 >;
 
-// declare global {
-//   interface Window {
-//     csvImportHook?: (
-//       records: Record<string, string>[],
-//     ) => Promise<KintoneRecord[]>;
-//   }
-// }
-
 export {};

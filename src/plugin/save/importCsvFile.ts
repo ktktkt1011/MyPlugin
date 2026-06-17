@@ -38,9 +38,7 @@ export async function importCsvFile(
         }
         progress.done();
       } catch (error: any) {
-        console.log(error);
-        console.log(error.data);
-        console.log(error.data?.errors);
+        throw new Error(error);
       }
 
       /* 「更新または作成」を選択した場合 */
@@ -52,12 +50,7 @@ export async function importCsvFile(
       await updateRecords(hookedRecords, updateKey, appSchema, appId, false);
     }
   } catch (error: any) {
-    console.log("error", error);
-    console.log("data", error.data);
-    console.log("errors", error.data?.errors);
-    console.log("message", error.data?.message);
-
-    throw error;
+    throw new Error(error);
   }
 }
 

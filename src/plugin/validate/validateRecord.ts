@@ -5,7 +5,7 @@
 import { FIELD_TYPE } from "../config";
 
 import type { AppSchema, KintoneRecord } from "../types";
-const maxRecords = 10000;
+const maxRecords = 500;
 /**
  * バリデーションエラー
  */
