@@ -7,7 +7,7 @@ import { getAppSchema } from "./schema/getAppSchema";
 import { convertRecords } from "./convert/convertRecord";
 import { validateRecords } from "./validate/validateRecord";
 import { runHook } from "./hook/runHook";
-import { checkedSave } from "./validate/checkedSave";
+import { checkedSave } from "./import/checkedSave";
 import { importCsvFile } from "./save/importCsvFile";
 import { selectCsvFile } from "./import/selectCsvFile";
 import { BUTTON_CONFIG } from "./config";
@@ -19,8 +19,6 @@ const spinner = new Spinner({
   id: "options-id",
   container: document.body,
 });
-
-const client = new KintoneRestAPIClient({});
 
 /**
  * CSVをJSON配列へ変換、1行目をヘッダーとして扱う
@@ -77,7 +75,7 @@ export const FUNCTIONS = {
         validateRecords(records, appSchema);
 
         // 7. hook
-        const hookedRecords = await runHook(records);
+        const hookedRecords = await runHook(records, saveWay, updateKey);
 
         // 8. 再検証
         validateRecords(hookedRecords, appSchema);

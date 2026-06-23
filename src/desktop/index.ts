@@ -1,11 +1,15 @@
 import { KintoneRestAPIClient } from "@kintone/rest-api-client";
-import type { KintoneRecord } from "../src/types";
+import type { KintoneRecord } from "../plugin/types";
 const client = new KintoneRestAPIClient();
 (() => {
   "use strict";
-  window.csvImportHook = async (records: KintoneRecord[]) => {
+  window.csvImportHook = async (
+    records: KintoneRecord[],
+    saveWay: string,
+    updateKey: string,
+  ) => {
     const appId = kintone.app.getId();
-    if (!appId) return records;
+    if (!appId || updateKey === "UPDATE" || !saveWay) return records;
     const getRecord = await client.record.getAllRecords({
       app: appId,
       orderBy: `数値 desc`,

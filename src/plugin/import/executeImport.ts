@@ -5,7 +5,11 @@ import { runHook } from "../hook/runHook";
 
 import type { CsvRecord } from "../types";
 
-export async function executeImport(csvRecords: CsvRecord[]): Promise<void> {
+export async function executeImport(
+  csvRecords: CsvRecord[],
+  saveWay: string,
+  updateKey: string,
+): Promise<void> {
   /**
    * appId取得
    */
@@ -35,7 +39,7 @@ export async function executeImport(csvRecords: CsvRecord[]): Promise<void> {
   /**
    * hook実行
    */
-  const hookRecords = await runHook(convertedRecords);
+  const hookRecords = await runHook(convertedRecords, saveWay, updateKey);
 
   /**
    * create/update

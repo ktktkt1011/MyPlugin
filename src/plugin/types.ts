@@ -79,6 +79,8 @@ export interface HookContext {
 export type CsvImportHook = (
   records: KintoneRecord[],
   context: HookContext,
+  saveWay: string,
+  updateKey: string,
 ) => Promise<KintoneRecord[]> | KintoneRecord[];
 
 /**
