@@ -92,6 +92,7 @@ export const FUNCTIONS = {
           icon: "error",
           text: message,
         });
+        console.log(error);
       }
     });
 

@@ -43,7 +43,7 @@ export async function importCsvFile(
 
       /* 「更新または作成」を選択した場合 */
     } else if (saveWay === IMPORT_MODE.UPSERT) {
-      await updateRecords(hookedRecords, updateKey, appSchema, appId, true);
+      await upsertRecords(hookedRecords, updateKey, appSchema, appId);
 
       /* 「更新」を選択した場合 */
     } else if (saveWay === IMPORT_MODE.UPDATE) {
@@ -98,5 +98,52 @@ async function updateRecords(
 
     progress.setProgress((CHUNK_SIZE / hookedRecords.length) * 100);
   }
+  progress.done();
+}
+
+async function upsertRecords(
+  hookedRecords: KintoneRecord[],
+  updateKey: string,
+  appSchema: AppSchema,
+  appId: number,
+) {
+  const excludedFieldCodes = getExcludedFieldCodes(appSchema, [
+    "RECORD_NUMBER",
+  ]);
+
+  let percent = 0;
+
+  progress.start();
+  progress.setProgress(percent);
+
+  for (let i = 0; i < hookedRecords.length; i++) {
+    const record = structuredClone(hookedRecords[i]);
+
+    // 更新キーとレコード番号はrecordから除外
+    delete record[updateKey];
+    delete record[getRecordNumberFieldCode(appSchema) as string];
+
+    const params =
+      excludedFieldCodes[0] === updateKey
+        ? {
+            app: appId,
+            id: hookedRecords[i][updateKey].value as string,
+            record,
+          }
+        : {
+            app: appId,
+            updateKey: {
+              field: updateKey,
+              value: hookedRecords[i][updateKey].value as string | number,
+            },
+            record,
+          };
+
+    await client.record.upsertRecord(params as any);
+
+    percent = Math.floor(((i + 1) / hookedRecords.length) * 100);
+    progress.setProgress(percent);
+  }
+
   progress.done();
 }
